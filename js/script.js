@@ -25,7 +25,8 @@ function showPage(list, page) {
 
    const studentList = document.querySelector('.student-list');
    studentList.innerHTML = '';
-
+   
+   // This loop iterates through the list of students and creates the DOM elements needed to display the student information
    for ( let i = 0; i < list.length; i++ ) {
       if (i >= startIndex && i < endIndex) {
          const li = document.createElement('li');
@@ -70,6 +71,7 @@ function addPagination(list) {
    const linkList = document.querySelector('.link-list');
    linkList.innerHTML = '';
 
+   // This loop creates the button elements
    for ( let i = 0; i < numberOfPages; i++) {
       const li = document.createElement('li');
       const button = document.createElement('button');
@@ -81,6 +83,7 @@ function addPagination(list) {
       linkList.appendChild(li);
    }
    
+   // This section adds the event listener for the button click, so that when the page number is clicked the corresponding page is shown and the button element is updated with the class "active"
    linkList.firstChild.firstChild.className = 'active';
    linkList.addEventListener('click', (e) => {
       if (e.target.tagName === 'BUTTON') {
