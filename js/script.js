@@ -16,6 +16,8 @@ For assistance:
 /*
 Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
+It takes a list of student data and a page number as parameters
+A for loop loops through the student data to create and format the list elements that display each students information
 */
 
 function showPage(list, page) {
@@ -25,7 +27,7 @@ function showPage(list, page) {
 
    const studentList = document.querySelector('.student-list');
    studentList.innerHTML = '';
-   
+
    // This loop iterates through the list of students and creates the DOM elements needed to display the student information
    for ( let i = 0; i < list.length; i++ ) {
       if (i >= startIndex && i < endIndex) {
@@ -37,9 +39,9 @@ function showPage(list, page) {
          div.className = "student-details";
 
          const img = document.createElement('img');
+         img.className = "avatar";
          img.src = `${list[i].picture.large}`;
          img.alt = "Profile Picture";
-         img.className = "avatar";
          div.appendChild(img);
 
          const h3 = document.createElement('h3');
@@ -50,12 +52,16 @@ function showPage(list, page) {
          span.className = "email"
          span.textContent = `${list[i].email}`;
          div.appendChild(span);
-         li.appendChild(div)
-
-         span.className = "date"
-         span.textContent =  `Joined ${list[i].registered.date.replace(/\-/g,"/")}`;
-         div.appendChild(span)
          li.appendChild(div);
+
+         const div2 = document.createElement('div');
+         div2.className = "joined-details";
+
+         const span2 = document.createElement('span');
+         span2.className = "date";
+         span2.textContent =  `Joined ${list[i].registered.date.replace(/\-/g,"/")}`;
+         div2.appendChild(span2);
+         li.appendChild(div2);
 
          studentList.appendChild(li); 
       }
@@ -65,6 +71,7 @@ function showPage(list, page) {
 /*
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
+It creates the button elements and the event listener to switch between pages
 */
 function addPagination(list) {
    const numberOfPages = list.length / 9;
