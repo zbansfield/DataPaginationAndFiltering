@@ -71,7 +71,7 @@ function showPage(list, page) {
 /*
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
-It creates the button elements and the event listener to switch between pages
+It creates the button elements and the event listener to activate when the buttons are clicked and switch between pages
 */
 function addPagination(list) {
    const numberOfPages = list.length / 9;
